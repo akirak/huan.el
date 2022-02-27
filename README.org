@@ -1,14 +1,13 @@
 * huan.el
-/Huàn/ (换; meaning change in Mandarin) is a tiny library for replacing a symbol at point with a predefined alternative.
-It is an alternative to of [[https://github.com/ROCKTAKEY/grugru][grugru]] and [[https://gitlab.com/ideasman42/emacs-cycle-at-point/][cycle-at-point]].
+/Huàn/ (换; meaning change in Mandarin) is a tiny library for replacing a symbol at point with one of its predefined alternatives.
+It is an alternative to [[https://github.com/ROCKTAKEY/grugru][grugru]] and [[https://gitlab.com/ideasman42/emacs-cycle-at-point/][cycle-at-point]].
 
 The differences from those options are:
 
-1. It is created with [[https://github.com/oantolin/embark][embark]] integration in mind. If there are many alternatives, you will =completing-read= for selecting a candidate rather than firing the same command multiple times.
+1. It is created with [[https://github.com/oantolin/embark][embark]] integration in mind. If there are multiple candidates, you will use =completing-read= for selecting a candidate rather than firing the same command multiple times.
 2. It is minimal. I didn't consider support for natural languages, because it should be handled by a dedicated package (with spell and grammar checking).
 ** Installation
-As huan is an inferior alternative to the other packages on MELPA, I probably won't submit this package to MELPA.
-It is not intended for that purpose.
+As huan is an inferior alternative to other packages on MELPA, I probably won't submit this package to MELPA.
 
 Add =huan.el= to your load path, or use one of the source-based package managers such as straight.el, borg, quelpa, etc.
 ** Configuration
