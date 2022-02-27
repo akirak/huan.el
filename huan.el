@@ -25,7 +25,7 @@
   (save-excursion
     (beginning-of-defun-raw)
     (when (re-search-forward "\\b" nil t)
-      (huan-alternate-symbol))))
+      (huan-symbol))))
 
 ;;;###autoload
 (defun huan-symbol ()
