@@ -4,6 +4,10 @@
 (require 'thingatpt)
 (require 'subr-x)
 
+(defgroup huan nil
+  "Replace symbols with predefined alternatives."
+  :prefix "huan-")
+
 (defcustom huan-mode-symbols-alist
   '((emacs-lisp-mode
      ("defun" "cl-defun")
