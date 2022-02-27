@@ -6,6 +6,7 @@
 
 (defgroup huan nil
   "Replace symbols with predefined alternatives."
+  :group 'editing
   :prefix "huan-")
 
 (defcustom huan-mode-symbols-alist
