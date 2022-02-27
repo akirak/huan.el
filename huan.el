@@ -39,13 +39,15 @@
     (pcase (bounds-of-thing-at-point 'symbol)
       (`(,start . ,end)
        (let ((cur (buffer-substring-no-properties start end)))
-         (when-let (entry (cl-find-if (lambda (list) (member cur list))
-                                      entries))
-           (let ((new (huan--maybe-complete-candidate cur entry)))
-             (save-excursion
-               (delete-region start end)
-               (goto-char start)
-               (insert new)))))))))
+         (if-let (entry (cl-find-if (lambda (list) (member cur list))
+                                    entries))
+             (let ((new (huan--maybe-complete-candidate cur entry)))
+               (save-excursion
+                 (delete-region start end)
+                 (goto-char start)
+                 (insert new)))
+           (let (message-log-max)
+             (message "There is no alternative defined for the symbol"))))))))
 
 (defun huan--maybe-complete-candidate (cur candidates)
   "Pick an alternative to CUR from CANDIDATES."
