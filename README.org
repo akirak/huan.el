@@ -1,0 +1,22 @@
+* huan.el
+/Huàn/ (换; meaning change in Mandarin) is a tiny library for replacing a symbol at point with a predefined alternative.
+It is an alternative to of [[https://github.com/ROCKTAKEY/grugru][grugru]] and [[https://gitlab.com/ideasman42/emacs-cycle-at-point/][cycle-at-point]].
+** Installation
+As huan is an inferior alternative to the other packages on MELPA, I probably won't submit this package to MELPA.
+It is not intended for that purpose.
+Add =huan.el= to your load path, or use one of the source-based package managers such as straight.el, borg, quelpa, etc.
+** Configuration
+If you use [[https://github.com/oantolin/embark][embark]], you can use the following snippet for integration:
+
+#+begin_src emacs-lisp
+  (with-eval-after-load 'embark
+    (define-key embark-defun-map "`" #'huan-defun)
+    (define-key embark-identifier-map "`" #'huan-symbol))
+#+end_src
+
+For customization, see =huan-mode-symbols-alist=.
+** Usage
+The following interactive functions are available:
+
+- =huan-defun=
+- =huan-symbol=
