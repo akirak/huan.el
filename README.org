@@ -19,7 +19,41 @@ If you are using embark, you can use the following snippet for integration:
     (define-key embark-identifier-map "`" #'huan-symbol))
 #+end_src
 
-For customization, see =huan-mode-symbols-alist=.
+To define your own substitutions, customize =huan-mode-symbols-alist=.
+*** setup.el keyword
+If you are using [[https://git.sr.ht/~pkal/setup][setup.el]] for your init.el, you can define =:huan= keyword as follows:
+
+#+begin_src emacs-lisp
+  (define-setup-macro
+   :huan (&rest entries)
+   "Add ENTRIES to `huan-mode-symbols-alist'."
+   :indent 0
+   `(with-eval-after-load 'huan
+      (let ((mode ',(setup-get 'mode))
+            (entries ',entries))
+        (if-let (cell (assq mode huan-mode-symbols-alist))
+            (let ((sym (make-symbol "entries")))
+              (set sym (cdr cell))
+              (dolist (ent (reverse entries))
+                (add-to-list sym ent))
+              (setcdr cell (symbol-value sym)))
+          (push (cons mode entries)
+                huan-mode-symbols-alist)))))
+#+end_src
+
+=define-setup-macro= is the /alternative macro definer/ described in the [[https://www.emacswiki.org/emacs/SetupEl#h5o-4][EmacsWiki]].
+
+You can use the keyword to add entries to the default settings:
+
+#+begin_src emacs-lisp
+  (setup elisp-mode
+    (:with-mode emacs-lisp-mode
+      (:huan
+        ("eval-after-load" "with-eval-after-load")
+        ("add-hook" "remove-hook")
+        (":around" ":override" ":before" ":after"))))
+#+end_src
+
 ** Usage
 The following interactive functions are available:
 
