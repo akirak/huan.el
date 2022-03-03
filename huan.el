@@ -13,7 +13,7 @@
   '((emacs-lisp-mode
      ("defun" "cl-defun")
      ("defmacro" "cl-defmacro")
-     ("cl-defeneric" "cl-defmethod")
+     ("cl-defgeneric" "cl-defmethod")
      ("let" "let*")
      ("eq" "eql" "equal")
      ("memq" "memql" "member")
