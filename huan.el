@@ -18,7 +18,12 @@
      ("eq" "eql" "equal")
      ("memq" "memql" "member")
      ("defvar" "defconst" "defcustom")
-     ("cl-flet" "cl-flet*" "cl-labels")))
+     ("cl-flet" "cl-flet*" "cl-labels")
+     ("thunk-let" "thunk-let*")
+     ("eval-after-load" "with-eval-after-load")
+     ("add-hook" "remove-hook")
+     ("advice-add" "advice-remove")
+     ("ad-activate" "ad-deactivate")))
   "FIXME"
   :type '(alist :key-type (symbol :tag "Major mode")
                 :value-type (repeat (repeat string))))
