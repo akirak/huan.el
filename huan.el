@@ -41,7 +41,8 @@
 (defun huan-symbol ()
   "Change the symbol at point."
   (interactive)
-  (when-let (entries (cdr (assq major-mode huan-mode-symbols-alist)))
+  (when-let* ((mode (apply #'derived-mode-p (mapcar #'car huan-mode-symbols-alist)))
+              (entries (cdr (assq mode huan-mode-symbols-alist))))
     (pcase (bounds-of-thing-at-point 'symbol)
       (`(,start . ,end)
        (let ((cur (buffer-substring-no-properties start end)))
